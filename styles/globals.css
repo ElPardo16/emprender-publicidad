@@ -1,26 +1,145 @@
-html,
-body {
+*{
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
   box-sizing: border-box;
 }
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+:root{
+  --green: #69B02E;
+  --blue: #0096D1;
+  --gray: #e6e6e6;
+}
+body{
+  position: relative;
+}
+header{
+  min-height: 100px;
+  background: var(--blue);
+}
+header nav{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+header a{
+  display: block;
+  color: white;
+}
+header .logo{
+  position: relative;
+  height: 100px;
+}
+.logo img{
+  width: 100%;
+  height: 100%;
+}
+.header_filter{
+  min-height: 80px;
+  display: grid;
+  grid: 80px min-content / 2fr 1fr;
+  place-items: center;
+}
+.header_filter a{
+  margin-right: 20px;
+  height: 30px;
+  justify-self: end;
+}
+.header_filter select{
+  width: 80%;
+  height: 30px;
+  font-size: 1.4rem;
+}
+.header_filter option{
+  font-size: 1rem;
+}
+.cart{
+  position: relative;
+}
+.cart::before{
+  content: attr(data-text);
+  background: var(--green);
+  color: white;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  top: -10%;
+  right: -10%;
+  font-weight: bold;
+}
+main{
+  height: calc(100vh - 180px);
+}
+footer{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border-top: var(--blue) 2px solid;
+}
+footer img{
+  width: 90%;
+  height: 100%;
+}
+.social{
+  display: flex;
+  gap: 20px;
+  padding: 0 20px 30px;
+}
+/*Menu*/
+.menu_background{
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, .7);
+  z-index: 30;
+}
+.menu{
+  position: absolute;
+  width: 70%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: var(--gray);
+  display: grid;
+  grid: 1fr 1fr min-content / 1fr;
+  place-items: center;
+  gap: 15px;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: black;
+}
+.menu ul{
+  align-self: start;
+  list-style: none;
+  width: 100%;
+}
+.menu li a{
+  padding: 15px 30px;
+  display: block;
+  text-decoration: none;
+  color: black;
+}
+.menu .social{
+  justify-self: start;
+  padding-left: 30px;
+}
+.menu .select{
+  background: var(--blue);
+  color: white;
+}
+.menu .user{
+  position: relative;
+  place-self: stretch;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 15px;
+}
+.menu .user img{
+  position: relative;
+  border-radius: 50%;
+  background: black;
 }
