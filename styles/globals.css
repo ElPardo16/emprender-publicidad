@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 *{
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 :root{
   --green: #69B02E;
@@ -247,6 +249,124 @@ footer img{
   z-index: 10;
   display: grid;
   place-items: center;
+}
+/*Modal*/
+.modal{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  inset: 0;
+  margin: auto;
+  z-index: 100;
+  color: var(--blue);
+}
+.modal_head{
+  display: grid;
+  grid: 1fr / 1fr;
+  place-items: center;
+  padding: 20px;
+}
+.modal_head h2, .modal_head svg{
+  grid-area: 1/1/2/2;
+}
+.modal_head svg{
+  justify-self: start;
+}
+.modal h2{
+  font-size: 2.4rem;
+}
+.modal_content{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: white;
+}
+.modal_info{
+  position: relative;
+  height: calc(100% - 280px);
+  padding: 40px 30px;
+}
+.con_btn{
+  position: absolute;
+  width: 100%;
+  padding: 30px;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  place-items: center start;
+  gap: 40px;
+  background: var(--gray);
+}
+.con_btn h3{
+  font-size: 1.8rem;
+  color: black;
+}
+.con_btn .btn{
+  width: 100%;
+  height: 60px;
+  font-size: 2rem;
+  font-weight: bold;
+  display: grid;
+  grid: 1fr / 1fr;
+  place-items: center;
+  padding: 0 30px;
+}
+.con_btn span, .con_btn .btn svg{
+  grid-area: 1/1/2/2;
+}
+.con_btn .btn svg{
+  justify-self: end;
+}
+/*Cart Item*/
+.cart_item{
+  height: 180px;
+  outline: 5px solid var(--green);
+  border-radius: 10px;
+  display: grid;
+  grid: 1fr 1fr 40px / 120px 1fr;
+  place-items: center start;
+}
+.cart_item img{
+  grid-area: 1/1/3/2;
+  place-self: center; 
+}
+.cart_item h4{
+  font-size: 1.4rem;
+  font-weight: normal;
+  color: var(--green);
+}
+.cart_item p{
+  grid-area: 3/1/4/3;
+  padding: 0 15px;
+  background: var(--green);
+  place-self: stretch;
+  display: grid;
+  place-items: center start;
+  color: white;
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+/*Units*/
+.units{
+  width: 100%;
+  display: grid;
+  place-items: center;
+  grid: 1fr/ 2fr 1fr;
+}
+.units > svg{
+  color: red;
+  opacity: .8;
+}
+.control{
+  padding: 0 5px;
+  display: grid;
+  grid: 1fr / repeat(3, 1fr);
+  place-items: center;
+  width: 100px;
+  height: 40px;
+  background: var(--blue);
+  border-radius: 20px;
+  color: white;
 }
 /*Keyframes*/
 @keyframes rotateM {
