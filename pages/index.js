@@ -8,6 +8,9 @@ export default function Shop() {
       <Layout title="Tienda">
         <main>
           <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
         </main>
       </Layout>
     </div>
