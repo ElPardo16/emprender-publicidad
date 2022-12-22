@@ -3,33 +3,39 @@ import Link from 'next/link'
 import Social from './Social'
 import { useDispatch } from "react-redux"
 import { toggleMenu } from "../utils/menuSlice"
+import { gsap } from "gsap";
+import { show } from '../utils/dialogSlice'
 
 export default function Menu() {
     const dispatch = useDispatch()
-
-    function hideMenu() {
-        dispatch(toggleMenu())
-        menu.classList.remove("show-menu")
-        menu.nextSibling.classList.remove("show-drawer")
+    function clickMenu(item){
+        switch(item){
+            case 0:
+                dispatch(toggleMenu())
+                dispatch(show({type: "cart"}))
+                break
+            case 1:
+                console.log("cotizar")
+        }
     }
     return (
         <div className="menu_container">
-            <div onClick={_ => { hideMenu() }} id="menu" className="menu_background"></div>
+            <div onClick={_ => { dispatch(toggleMenu()) }} id="menu" className="menu_background"></div>
             <div className="menu">
                 <div className="user">
-                    <Image src="" alt="Imagen de perfil" width={150} height={150} />
+                    <Image src="/img/logoW.png" alt="Imagen de perfil" width={150} height={150}/>
                     <p>Nombre Usuario</p>
                 </div>
                 {/* <div className="user_log"></div> */}
                 <ul>
                     <li>
-                        <Link className="select" href="/">item 1</Link>
+                        <Link className="select" href="/">Tienda</Link>
                     </li>
                     <li>
-                        <Link href="/">item 2</Link>
+                        <a onClick={_ => {clickMenu(0)}}>Carrito</a>
                     </li>
                     <li>
-                        <Link href="/">item 3</Link>
+                        <a onClick={_ => {clickMenu(1)}}>Cotizacion</a>
                     </li>
                 </ul>
                 <Social />

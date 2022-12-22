@@ -13,6 +13,9 @@
 body{
   position: relative;
 }
+button, a{
+  cursor: pointer;
+}
 header{
   position: sticky;
   min-height: 100px;
@@ -65,7 +68,7 @@ header .logo{
 .cart{
   position: relative;
 }
-.cart::before{
+.full::before{
   content: attr(data-text);
   background: var(--green);
   color: white;
@@ -81,7 +84,7 @@ header .logo{
 }
 main{
   padding: 20px;
-  min-height: calc(100vh - 180px);
+  /* min-height: calc(100vh - 180px); */
   display: grid;
   grid-template-columns: 1fr;
   gap: 30px;
@@ -104,6 +107,12 @@ footer img{
   padding: 0 20px 30px;
 }
 /*Menu*/
+.empty{
+  margin: 30px 0; 
+  text-align: center;
+  font-size: 1.6rem;
+  color: rgba(0, 0, 0, .7);
+}
 .menu_container{
   position: fixed;
   top: 0;
@@ -143,15 +152,6 @@ footer img{
 }
 .show-drawer{
   left: 0;
-}
-.spin{
-  --r: 180deg;
-  color: black;
-  animation: rotateM .4s ease;
-}
-.spin-r{
-  --r: -180deg;
-  animation: rotateM .4s ease;
 }
 .menu ul{
   align-self: start;
@@ -205,6 +205,9 @@ footer img{
   font-size: 2.4rem;
   color: white;
   z-index: 10;
+}
+.card img{
+  cursor: pointer;
 }
 .card_con{
   padding: 0 20px;
@@ -271,6 +274,7 @@ footer img{
 }
 .modal_head svg{
   justify-self: start;
+  cursor: pointer;
 }
 .modal h2{
   font-size: 2.4rem;
@@ -283,8 +287,11 @@ footer img{
 }
 .modal_info{
   position: relative;
-  height: calc(100% - 280px);
+  max-height: calc(100% - 280px);
   padding: 40px 30px;
+  display: grid;
+  gap: 30px;
+  overflow-y: scroll;
 }
 .con_btn{
   position: absolute;
@@ -327,6 +334,9 @@ footer img{
   place-items: center start;
 }
 .cart_item img{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
   grid-area: 1/1/3/2;
   place-self: center; 
 }
@@ -351,7 +361,7 @@ footer img{
   width: 100%;
   display: grid;
   place-items: center;
-  grid: 1fr/ 2fr 1fr;
+  grid: 1fr/ 2fr min-content;
 }
 .units > svg{
   color: red;
@@ -368,12 +378,36 @@ footer img{
   border-radius: 20px;
   color: white;
 }
-/*Keyframes*/
-@keyframes rotateM {
-  0%{
-    transform: rotate(0);
-  }
-  100%{
-    transform: rotate(var(--r));
-  }
+/*Descripcion*/
+.des_con{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid: repeat(4, min-content) / 1fr;
+  gap: 20px;
 }
+.des_img{
+  position: relative;
+  height: 230px;
+}
+.des_con img{
+  place-self: stretch;
+}
+.des_con h3{
+  font-size: 1.6rem;
+}
+.des h3{
+  margin-bottom: 20px;
+}
+.des p{
+  color: black;
+  font-size: 1.2rem;
+}
+.des_units{
+  display: grid;
+  grid: 1fr / 1fr 2fr;
+  place-items: center;
+  margin-top: 20px;
+}
+/*Keyframes*/

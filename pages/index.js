@@ -4,21 +4,23 @@ import CartItem from '../components/CartItem'
 import Info from '../components/Info'
 import Layout from '../components/Layout'
 import Description from '../components/Description'
+import { useSelector } from 'react-redux'
 
 export default function Shop() {
+  const productsState = useSelector(state => state.product)
+  const filterState = useSelector(state => state.filter)
+  const products = productsState.filter(item => item.category == filterState.category)
+  /* const dialogState = useSelector(state => state.dialog) */
   return (
       <Layout title="Tienda">
-        {/* <Info title="Carrito" type="cart">
+        {/* {dialogState.showDialog && 
+        <Info title="Carrito" type={dialogState.dialogType}>
           <CartItem/>
-        </Info> */}
-        <Info title="Ploter 100cm" type="des">
-          <Description />
-        </Info>
+          <CartItem/>
+        </Info>} */}
         <main>
-          <Card/>
-          <Card/>
-          <Card/>
-          <Card/>
+          {products.length != 0 ? products.map(item => <Card key={item.id} data={item}/>) 
+            : <h3 className='empty'>No hay productos para mostrar</h3>}
         </main>
       </Layout>
   )

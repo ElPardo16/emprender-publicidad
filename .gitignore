@@ -5,6 +5,8 @@
 /.pnp
 .pnp.js
 
+#img dev
+/public/img/bg1.jpg
 # testing
 /coverage
 
