@@ -9,13 +9,14 @@ import { show } from '../utils/dialogSlice'
 export default function Menu() {
     const dispatch = useDispatch()
     function clickMenu(item){
+        dispatch(toggleMenu())
         switch(item){
             case 0:
-                dispatch(toggleMenu())
                 dispatch(show({type: "cart"}))
                 break
             case 1:
                 console.log("cotizar")
+                break
         }
     }
     return (
@@ -29,7 +30,7 @@ export default function Menu() {
                 {/* <div className="user_log"></div> */}
                 <ul>
                     <li>
-                        <Link className="select" href="/">Tienda</Link>
+                        <Link className="select" href="/" onClick={_ => void dispatch(toggleMenu())}>Tienda</Link>
                     </li>
                     <li>
                         <a onClick={_ => {clickMenu(0)}}>Carrito</a>

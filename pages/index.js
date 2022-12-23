@@ -19,7 +19,7 @@ export default function Shop() {
           <CartItem/>
         </Info>} */}
         <main>
-          {products.length != 0 ? products.map(item => <Card key={item.id} data={item}/>) 
+          {products.length != 0 ? products.map((item, index) => <Card key={item.id} data={item} priority={index <= 2}/>) 
             : <h3 className='empty'>No hay productos para mostrar</h3>}
         </main>
       </Layout>

@@ -23,7 +23,7 @@ export default function Description({id,description}) {
   return (
     <div className="des_con">
         <div className="des_img">
-            <Image src="/img/bg1.jpg" alt="" fill={true}/>
+            <Image src="/img/bg1.jpg" alt="Producto" fill={true} priority={true}/>
         </div>
         <div className="des">
             <h3>Descripcion:</h3>

@@ -4,8 +4,12 @@ import Footer from "./Footer";
 import Header from "./Header";
 import Menu from './Menu';
 import Info from './Info';
+import { useState } from 'react';
+import Search from './Search';
+import Select from './Select';
 
 export default function Layout({ children, title }) {
+    const [order, setOrder] = useState("ba")
     return (
         <>
             <Head>
@@ -17,7 +21,34 @@ export default function Layout({ children, title }) {
             {/* <Menu/> */}
             <Info />
             <Header />
-            {children}
+            <section>
+                <aside>
+                    <div className="filters">
+                        <Search/>
+                        <h3>Categorias:</h3>
+                        <Select/>
+                        <h3>Precio:</h3>
+                        <div className="minmax">
+                            <input type="number" placeholder='min'/>
+                            <span>-</span>
+                            <input type="number" placeholder='max'/>
+                        </div>
+                        <h3>Ordenar:</h3>
+                        <div className='con_radios'>
+                            <label htmlFor="r1">
+                                <input type="radio" name="order" value="ba" id="r1" checked={order === "ba"} onChange={e => void setOrder(e.target.value)}/> Precio mas bajo a alto
+                            </label>
+                            <label htmlFor="r2">
+                                <input type="radio" name="order" value="ab" id="r2" checked={order === "ab"} onChange={e => void setOrder(e.target.value)}/> Precio mas alto a bajo
+                            </label>
+                            <label htmlFor="r3">
+                                <input type="radio" name="order" value="fp" id="r3" checked={order === "fp"} onChange={e => void setOrder(e.target.value)}/> Fecha de publicacion
+                            </label>
+                        </div>
+                    </div>
+                </aside>
+                {children}
+            </section>
             <FloatBtn />
             <Footer />
 
