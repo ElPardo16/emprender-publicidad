@@ -6,7 +6,7 @@ import { select, show } from "../utils/dialogSlice";
 import { numberF } from "../utils/tools";
 
 export default function Card({data, priority = false}) {
-  const {id,title, price} = data
+  const {id,title, price, img} = data
   const cartState = useSelector(state => state.cart)
   const dispatch = useDispatch()
   function handleClick(){
@@ -28,8 +28,9 @@ export default function Card({data, priority = false}) {
 
   return (
     <div className="card">
-      <Image src="/img/bg1.jpg" alt="Producto" fill={true} onClick={_ => {handleClick()}} priority={priority}/>
-      <h2>{title}</h2>
+      <div className="bg" onClick={_ => {handleClick()}}></div>
+      <Image src={`/img/${img}`} alt="Producto" fill={true} priority={priority}/>
+      <h2 onClick={_ => {handleClick()}}>{title}</h2>
       <div className="card_con">
         <p>${numberF.format(price)}</p>
         <Button type="cart" size={20} fun={addToCart}/>

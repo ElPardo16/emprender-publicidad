@@ -47,7 +47,7 @@ export default function Info() {
                 <div className="modal_info">
                     {dialogState.dialogType == "cart" ? cartState.products.length != 0 ?
                      cartState.products.map(item => <CartItem key={item.id} price={item.price} id={item.id}/>) : <h3 className="empty">No hay productos en el carrito</h3>
-                    : <Description id={selectedItem.id} description={selectedItem.description}/>}
+                    : <Description id={selectedItem.id} description={selectedItem.description} img={selectedItem.img}/>}
                 </div>
                 <div className="con_btn">
                     <h3>{ dialogState.dialogType == "cart" ? `Total: $${numberF.format(total(cartState))}` : `Precio c/u: $${numberF.format(selectedItem.price)}`}</h3>

@@ -4,12 +4,27 @@ import Footer from "./Footer";
 import Header from "./Header";
 import Menu from './Menu';
 import Info from './Info';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Search from './Search';
 import Select from './Select';
+import { useDispatch, useSelector } from 'react-redux';
+import { orderArray, setPMax, setPMin } from '../utils/filterSlice';
 
 export default function Layout({ children, title }) {
-    const [order, setOrder] = useState("ba")
+    const dispatch = useDispatch()
+    const filterState = useSelector(state => state.filter)
+    const [min, setMin] = useState()
+    const [max, setMax] = useState()
+    const [order, setOrder] = useState(filterState.options.order)
+    useEffect(_ => {
+        dispatch(orderArray(order))
+    }, [order])
+    useEffect(_ => {
+        dispatch(setPMin(min))
+    }, [min])
+    useEffect(_ => {
+        dispatch(setPMax(max))
+    }, [max])
     return (
         <>
             <Head>
@@ -24,25 +39,28 @@ export default function Layout({ children, title }) {
             <section>
                 <aside>
                     <div className="filters">
-                        <Search/>
+                        <Search />
                         <h3>Categorias:</h3>
-                        <Select/>
+                        <Select />
                         <h3>Precio:</h3>
                         <div className="minmax">
-                            <input type="number" placeholder='min'/>
+                            <input type="number" placeholder='min' onChange={e => void setMin(parseInt(e.target.value))} />
                             <span>-</span>
-                            <input type="number" placeholder='max'/>
+                            <input type="number" placeholder='max' onChange={e => void setMax(parseInt(e.target.value))} />
                         </div>
                         <h3>Ordenar:</h3>
                         <div className='con_radios'>
                             <label htmlFor="r1">
-                                <input type="radio" name="order" value="ba" id="r1" checked={order === "ba"} onChange={e => void setOrder(e.target.value)}/> Precio mas bajo a alto
+                                <input type="radio" name="order" value="0" id="r1" checked={order === "0"} onChange={e => void setOrder(e.target.value)} /> Por defecto
                             </label>
                             <label htmlFor="r2">
-                                <input type="radio" name="order" value="ab" id="r2" checked={order === "ab"} onChange={e => void setOrder(e.target.value)}/> Precio mas alto a bajo
+                                <input type="radio" name="order" value="1" id="r2" checked={order === "1"} onChange={e => void setOrder(e.target.value)} /> Precio mas bajo a alto
                             </label>
                             <label htmlFor="r3">
-                                <input type="radio" name="order" value="fp" id="r3" checked={order === "fp"} onChange={e => void setOrder(e.target.value)}/> Fecha de publicacion
+                                <input type="radio" name="order" value="2" id="r3" checked={order === "2"} onChange={e => void setOrder(e.target.value)} /> Precio mas alto a bajo
+                            </label>
+                            <label htmlFor="r4">
+                                <input type="radio" name="order" value="3" id="r4" checked={order === "3"} onChange={e => void setOrder(e.target.value)} /> Alfabeticamente (A-Z)
                             </label>
                         </div>
                     </div>

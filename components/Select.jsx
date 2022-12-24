@@ -8,7 +8,7 @@ export default function Select() {
     const listCat = [... new Set(productsState.map(item => item.category))]
     return (
         <select className="select" defaultValue={filterState.category} onChange={e => void dispatch(cat(e.target.value))}>
-            {listCat.map((item, index) => <option key={index} value={item.toLowerCase()}>{item}</option>)}
+            {listCat.map((item, index) => <option key={index} value={item}>{item}</option>)}
         </select>
     )
 }

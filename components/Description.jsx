@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useSelector } from "react-redux";
 import Units from "./Units";
 
-export default function Description({id,description}) {
+export default function Description({id,description,img}) {
   const cartState = useSelector(state => state.cart)
   function unit() {
     if(cartState.products.length == 0){
@@ -23,7 +23,7 @@ export default function Description({id,description}) {
   return (
     <div className="des_con">
         <div className="des_img">
-            <Image src="/img/bg1.jpg" alt="Producto" fill={true} priority={true}/>
+            <Image src={`/img/${img}`}alt="Producto" fill={true} priority={true}/>
         </div>
         <div className="des">
             <h3>Descripcion:</h3>

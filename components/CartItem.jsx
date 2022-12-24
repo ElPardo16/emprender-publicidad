@@ -7,7 +7,7 @@ export default function CartItem({price,id}) {
   const product = productsState.find(item => item.id === id)
   return (
     <div className="cart_item">
-        <img src="./img/bg1.jpg" alt=""/>
+        <img src={`/img/${product.img}`} alt=""/>
         <h4>{product.title}</h4>
         <Units type={1} id={id}/>
         <p>Precio por unidad: ${numberF.format(price)}</p>
