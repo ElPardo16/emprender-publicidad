@@ -51,7 +51,7 @@ export default function Shop({productsRemote}) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch("http://ep-cliente/api/products")
+  const res = await fetch("https://ep-cliente.netlify.app/api/products")
   const json = await res.json()
   return {
     props: {
