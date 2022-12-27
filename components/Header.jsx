@@ -26,6 +26,11 @@ export default function Header() {
     fc.classList.toggle("fc_show")
     ex_filter.classList.toggle("rotate")
   }
+  // bug en el menu, solo en despliegue
+  useEffect(_ => {
+    menu.classList.remove("show-menu")
+    menu.nextSibling.classList.remove("show-drawer")
+  },[])
   // cuando el estado del menu cambie entonces se ejecutara la funcion en el hook
   useEffect(_ => {
     // si esta abierto el menu entonces cambiamos algunos colores y animaciones
