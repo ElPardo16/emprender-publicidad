@@ -53,7 +53,7 @@ export default function Header() {
     menu.classList.toggle("show-menu")
     menu.nextSibling.classList.toggle("show-drawer")
 
-  }, [menuState.isOpen])
+  }, [menuState])
   return (
     <header>
       <nav>
