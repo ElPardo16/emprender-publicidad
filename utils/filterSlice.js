@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-
+// creamos el valor inicial del estado
 const initialState = {
     category: "Tarjetas de presentacion",
     options: {
@@ -11,6 +11,7 @@ const initialState = {
         order: "0"
     }
 }
+// creamos el estado y asignamos las funciones para modificarlos
 const filterSlice = createSlice({
     name: "filter",
     initialState,
@@ -32,6 +33,7 @@ const filterSlice = createSlice({
         }
     }
 })
-
+// exportamos las funciones que modifican el estado
 export const {cat, search, setPMin, setPMax, orderArray} = filterSlice.actions
+//exportamos el estado
 export default filterSlice.reducer

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-
+// creamos el valor inicial del estado
 const initialState = {
     products: [
         /* {
@@ -14,7 +14,7 @@ const initialState = {
         } */
     ]
 }
-
+// creamos el estado y asignamos las funciones para modificarlos
 const cartSlice = createSlice({
     name: "cart",
     initialState,
@@ -31,6 +31,7 @@ const cartSlice = createSlice({
         }
     }
 })
-
+// exportamos las funciones que modifican el estado
 export const {add,remove,update} = cartSlice.actions
+//exportamos el estado
 export default cartSlice.reducer 
