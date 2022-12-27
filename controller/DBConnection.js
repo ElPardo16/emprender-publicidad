@@ -1,6 +1,6 @@
 import { connect, connection } from "mongoose"
 
-const DB_URL = process.env.MDB_URL_LOCAL
+const DB_URL = process.env.MDB_URL
 
 const conn = {
     isConected: false
