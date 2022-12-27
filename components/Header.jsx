@@ -26,11 +26,6 @@ export default function Header() {
     fc.classList.toggle("fc_show")
     ex_filter.classList.toggle("rotate")
   }
-  // bug en el menu, solo en despliegue
-  useEffect(_ => {
-    menu.classList.remove("show-menu")
-    menu.nextSibling.classList.remove("show-drawer")
-  },[])
   // cuando el estado del menu cambie entonces se ejecutara la funcion en el hook
   useEffect(_ => {
     // si esta abierto el menu entonces cambiamos algunos colores y animaciones
@@ -43,6 +38,8 @@ export default function Header() {
         duration: .4,
         color: "black"
       })
+      menu.classList.add("show-menu")
+      menu.nextSibling.classList.add("show-drawer")
     }else{
       // las animaciones se hicieron con gsap
       gsap.set(".menu_container", {
@@ -53,10 +50,12 @@ export default function Header() {
         duration: .4,
         color: "white"
       })
+      menu.classList.remove("show-menu")
+      menu.nextSibling.classList.remove("show-drawer")
     }
     // ocultamos o mostramos el menu cambiando su clase
-    menu.classList.toggle("show-menu")
-    menu.nextSibling.classList.toggle("show-drawer")
+    /* menu.classList.toggle("show-menu")
+    menu.nextSibling.classList.toggle("show-drawer") */
 
   }, [menuState])
   return (
