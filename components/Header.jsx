@@ -42,8 +42,9 @@ export default function Header() {
       menu.nextSibling.classList.add("show-drawer")
     }else{
       // las animaciones se hicieron con gsap
-      gsap.set(".menu_container", {
-        left: "-100%"
+      gsap.to(".menu_container", {
+        left: "-100%",
+        delay: .4
       })
       gsap.to("#btn_m", {
         rotate: 0,
