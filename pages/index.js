@@ -6,7 +6,7 @@ import Layout from '../components/Layout'
 import Description from '../components/Description'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { fillProducts } from '../utils/ProductsSlice'
+import { fillProducts } from '../utils/productsSlice'
 
 export default function Shop({productsRemote}) {
   const dispatch = useDispatch()
@@ -51,7 +51,7 @@ export default function Shop({productsRemote}) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch("http://localhost:3000/api/products")
+  const res = await fetch("http://ep-cliente/api/products")
   const json = await res.json()
   return {
     props: {
